@@ -1,0 +1,68 @@
+[
+    {   "id": 1,
+        "firstname": "Elvina",
+        "lastname": "Lika",
+        "type": "Cellphone",
+        "number": "0695588706"
+    },
+    {   "id": 2,
+        "firstname": "Erand",
+        "lastname": "Lika",
+        "type": "Cellphone",
+        "number": "0695588707"
+    },
+    {   "id": 3,
+        "firstname": "Ina",
+        "lastname": "Lika",
+        "type": "Work",
+        "number": "0695588708"
+    },
+    {   "id": 4,
+        "firstname": "Elvi",
+        "lastname": "Lika",
+        "type": "Cellphone",
+        "number": "0695588709"
+    },
+    {   "id": 5,
+        "firstname": "Ana",
+        "lastname": "Lika",
+        "type": "Home",
+        "number": "0695588710"
+    },
+    {   "id": 6,
+        "firstname": "Beni",
+        "lastname": "Lusha",
+        "type": "Work",
+        "number": "0695588711"
+    },
+    {   "id": 7,
+        "firstname": "Juli",
+        "lastname": "Memaj",
+        "type": "Work",
+        "number": "0695588712"
+    },
+    {   "id": 8,
+        "firstname": "Fatjona",
+        "lastname": "Luka",
+        "type": "Work",
+        "number": "0695588713"
+    },
+    {   "id": 9,
+        "firstname": "Kevin",
+        "lastname": "Topolli",
+        "type": "Work",
+        "number": "0695588714"
+    },
+    {   "id": 10,
+        "firstname": "Timo",
+        "lastname": "Falaj",
+        "type": "Work",
+        "number": "0695588715"
+    },
+    {   "id": 11,
+        "firstname": "Ilda",
+        "lastname": "Leka",
+        "type": "Work",
+        "number": "0695588716"
+    }
+]

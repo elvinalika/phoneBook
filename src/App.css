@@ -1,0 +1,7 @@
+.divStyle {
+    width: 70%;
+    margin: auto;
+    border: 1px solid grey;
+    padding: 50px;
+    border-radius: 20px;
+}
