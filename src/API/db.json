@@ -1,0 +1,40 @@
+{
+  "contacts": [
+    {
+      "id": 2,
+      "firstname": "Erand",
+      "lastname": "Lika",
+      "type": "Work",
+      "number": "0695588707"
+    },
+    {
+      "id": 4,
+      "firstname": "Elvi",
+      "lastname": "Lika",
+      "type": "Home",
+      "number": "0695588709"
+    },
+    {
+      "id": 5,
+      "firstname": "Ana",
+      "lastname": "Lika",
+      "type": "Home",
+      "number": "0695588710"
+    },
+    {
+      "firstname": "Rezart",
+      "lastname": "Alija",
+      "type": "Cellphone",
+      "number": "0676861620",
+      "": "Work",
+      "id": 7
+    },
+    {
+      "firstname": "Elvina",
+      "lastname": "Lika",
+      "type": "Cellphone",
+      "number": "0695588706",
+      "id": 8
+    }
+  ]
+}

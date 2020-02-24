@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import {
-  Col,
-  Row,
   Button,
   Form,
   FormGroup,
@@ -9,7 +7,8 @@ import {
   Input,
   UncontrolledAlert
 } from "reactstrap";
-import * as actions from "../API/ManageContacts";
+import InputField from "../components/InputField";
+import axios from "axios";
 
 class CreateContact extends Component {
   state = {
@@ -19,37 +18,71 @@ class CreateContact extends Component {
       type: "Cellphone",
       number: ""
     },
+    errors: {},
     alert: false,
     msg: ""
   };
 
+  validate = () => {
+    const errors = {};
+    if (!this.state.contact.firstname) {
+      errors.firstname = "Firstname is required.";
+    }
+    if (!this.state.contact.lastname) {
+      errors.lastname = "Lastname is required.";
+    }
+    if (!this.state.contact.number) {
+      errors.number = "Number is required.";
+    }
+    return errors;
+  };
+
   create = event => {
     event.preventDefault();
-    let msg = actions.createNewContact(this.state.contact);
-    this.setState({
-      ...this.state,
-      contact: {
-        ...this.state.contact,
-        firstname: "",
-        lastname: "",
-        type: "Cellphone",
-        number: ""
-      },
-      alert: true,
-      msg: msg
-    });
+    const errors = this.validate();
+    if (Object.keys(errors).length === 0) {
+      axios
+        .post("http://localhost:3000/contacts", this.state.contact)
+        .then(response => {
+          console.log(response);
+          this.setState({
+            ...this.state,
+            contact: {
+              ...this.state.contact,
+              firstname: "",
+              lastname: "",
+              type: "Cellphone",
+              number: ""
+            },
+            msg: "Contact was added succesfully.",
+            alert: true
+          });
+        })
+        .catch(error => {
+          console.log(error);
+          this.setState({
+            ...this.state,
+            msg: "We are sorry, there has been a server error.",
+            alert: true
+          });
+        });
+    } else {
+      this.setState({
+        errors: errors
+      });
+    }
   };
 
   inputHandler = event => {
-    console.log(event.target.value);
     this.setState({
       ...this.state,
       contact: {
         ...this.state.contact,
-        [event.target.name]: event.target.value
+        [event.target.id]: event.target.value
       },
       alert: false,
-      msg: ""
+      msg: "",
+      errors: {}
     });
   };
 
@@ -57,9 +90,9 @@ class CreateContact extends Component {
     let alert = this.state.alert ? (
       <UncontrolledAlert
         color={
-          this.state.msg === "The contact is already on the list!"
-            ? "warning"
-            : "success"
+          this.state.msg === "Contact was added succesfully."
+            ? "success"
+            : "danger"
         }
       >
         {this.state.msg}
@@ -69,39 +102,34 @@ class CreateContact extends Component {
       <div className="divStyle">
         {alert}
         <Form onSubmit={this.create}>
-          <Row form>
-            <Col md={6}>
+          <div className="row">
+            <div className="col-md-6">
               <FormGroup>
                 <Label for="name">Firstname</Label>
-                <Input
-                  required
-                  type="text"
-                  name="firstname"
+                <InputField
                   id="firstname"
-                  value={this.state.contact.firstname}
                   onChange={this.inputHandler}
+                  value={this.state.contact.firstname}
+                  error={this.state.errors.firstname}
                 />
               </FormGroup>
-            </Col>
-            <Col md={6}>
+            </div>
+            <div className="col-md-6">
               <FormGroup>
                 <Label for="examplePassword">Lastname</Label>
-                <Input
-                  required
-                  type="text"
-                  name="lastname"
+                <InputField
                   id="lastname"
-                  value={this.state.contact.lastname}
                   onChange={this.inputHandler}
+                  value={this.state.contact.lastname}
+                  error={this.state.errors.lastname}
                 />
               </FormGroup>
-            </Col>
-          </Row>
-
+            </div>
+          </div>
           <FormGroup tag="fieldset" required>
             <legend>Type</legend>
-            <Row>
-              <Col md={4}>
+            <div className="row">
+              <div className="col-md-4">
                 <FormGroup check>
                   <Label check>
                     <Input
@@ -114,8 +142,8 @@ class CreateContact extends Component {
                     Cellphone
                   </Label>
                 </FormGroup>
-              </Col>
-              <Col md={4}>
+              </div>
+              <div className="col-md-4">
                 <FormGroup check>
                   <Label check>
                     <Input
@@ -127,8 +155,8 @@ class CreateContact extends Component {
                     Work
                   </Label>
                 </FormGroup>
-              </Col>
-              <Col md={4}>
+              </div>
+              <div className="col-md-4">
                 <FormGroup check>
                   <Label check>
                     <Input
@@ -140,18 +168,16 @@ class CreateContact extends Component {
                     Home
                   </Label>
                 </FormGroup>
-              </Col>
-            </Row>
+              </div>
+            </div>
           </FormGroup>
           <FormGroup>
             <Label for="exampleAddress">Number</Label>
-            <Input
-              required
-              type="text"
-              name="number"
+            <InputField
               id="number"
-              value={this.state.contact.number}
               onChange={this.inputHandler}
+              value={this.state.contact.number}
+              error={this.state.errors.number}
             />
           </FormGroup>
           <Button>Create</Button>

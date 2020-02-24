@@ -1,11 +1,10 @@
 import React, { Component } from "react";
+import { Route } from "react-router-dom";
 import "../App.css";
 import Header from "../header/Header";
-import ContactList from "../body/ContactList";
-import { Route } from "react-router-dom";
-import OrderedContactList from "../body/OrderedContactList";
-import CreateContact from "../body/CreateContact";
-import Homepage from "../body/Homepage";
+import ContactList from "../containers/ContactList";
+import CreateContact from "../containers/CreateContact";
+import Homepage from "../containers/Homepage";
 
 class Routes extends Component {
   render() {
@@ -16,7 +15,6 @@ class Routes extends Component {
         <br />
         <Route path="/" exact component={Homepage} />
         <Route path="/contacts" component={ContactList} />
-        <Route path="/orderedContacts" component={OrderedContactList} />
         <Route path="/createContact" component={CreateContact} />
       </div>
     );
