@@ -6,6 +6,6 @@ To start the project you have to:
 
 ### `json-server --watch db.json`
 
-In the project folder run : 
+2. In the project folder run : 
 
 ### `npm start`
