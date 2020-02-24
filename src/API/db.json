@@ -4,8 +4,8 @@
       "id": 2,
       "firstname": "Erand",
       "lastname": "Lika",
-      "type": "Work",
-      "number": "0695588707"
+      "type": "Cellphone",
+      "number": "0695588444"
     },
     {
       "id": 4,
@@ -33,7 +33,7 @@
       "firstname": "Elvina",
       "lastname": "Lika",
       "type": "Cellphone",
-      "number": "0695588706",
+      "number": "0695588000",
       "id": 8
     }
   ]

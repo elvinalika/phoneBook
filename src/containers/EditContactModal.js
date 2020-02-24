@@ -44,7 +44,7 @@ class EditContactModal extends Component {
 
   edit = () => {
     axios
-      .post(
+      .put(
         "http://localhost:3000/contacts/" + this.props.id,
         this.state.contact
       )
